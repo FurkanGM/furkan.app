@@ -4,8 +4,9 @@ import {
 	IoArrowDown,
 	IoLogoGithub,
 	IoLogoLinkedin,
-	IoMailOutline
+	IoMailOutline,
 } from "react-icons/all";
+import Link from "next/link";
 
 export default function Home() {
 	return (
@@ -16,7 +17,8 @@ export default function Home() {
 						<div
 							className={
 								"flex-shrink-0 relative aspect-square w-[5.625rem] rounded-full overflow-hidden m-3 ring-4 ring-offset-8 ring-offset-athens-gray-100 dark:ring-offset-ebony-900 ring-primary"
-							}>
+							}
+						>
 							<Avatar />
 						</div>
 						<div className={"flex-shrink-0 flex flex-col"}>
@@ -26,7 +28,8 @@ export default function Home() {
 							<div
 								className={
 									"font-normal text-neutrals-700 dark:text-neutrals-20"
-								}>
+								}
+							>
 								Fullstack Developer
 							</div>
 							<div className={"mt-2"}>
@@ -41,19 +44,23 @@ export default function Home() {
 					</div>
 					<div className="mt-4 p-3 flex gap-3">
 						<a
-							href={"#"}
-							className="w-full rounded-lg p-3 bg-primary-500 hover:bg-primary-600 font-medium text-white flex items-center justify-center cursor-pointer">
+							href={"/assets/docs/resume.pdf"}
+							className="w-full rounded-lg p-3 bg-primary-500 hover:bg-primary-600 font-medium text-white flex items-center justify-center cursor-pointer"
+							download={"Furkan Gezek - Resume.pdf"}
+						>
 							<span>Download CV</span>
 							<IoArrowDown className={"ml-2"} size={20} />
 						</a>
 						<a
 							href={"mailto:contact@furkan.app"}
-							className="rounded-lg py-3 px-6 bg-white hover:bg-athens-gray-50 dark:bg-neutrals-700 font-medium text-primary-500 flex items-center justify-center cursor-pointer">
+							className="rounded-lg py-3 px-6 bg-white hover:bg-athens-gray-50 dark:bg-neutrals-700 font-medium text-primary-500 flex items-center justify-center cursor-pointer"
+						>
 							<IoMailOutline size={20} />
 						</a>
 						<a
 							href={"https://www.linkedin.com/in/furkan-gezek/"}
-							className="rounded-lg py-3 px-6 bg-white hover:bg-athens-gray-50 dark:bg-neutrals-700 font-medium text-primary-500 flex items-center justify-center cursor-pointer">
+							className="rounded-lg py-3 px-6 bg-white hover:bg-athens-gray-50 dark:bg-neutrals-700 font-medium text-primary-500 flex items-center justify-center cursor-pointer"
+						>
 							<IoLogoLinkedin size={20} />
 						</a>
 					</div>

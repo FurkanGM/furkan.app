@@ -1,13 +1,6 @@
 {
   "semi": true,
-  "trailingComma": "none",
   "singleQuote": false,
-  "printWidth": 80,
   "tabWidth": 2,
-  "useTabs": true,
-  "arrowParens": "avoid",
-  "proseWrap": "preserve",
-  "quoteProps": "as-needed",
-  "bracketSameLine": true,
-  "bracketSpacing": true
+  "useTabs": true
 }
