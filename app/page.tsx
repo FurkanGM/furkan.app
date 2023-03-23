@@ -1,7 +1,10 @@
 import { getBaseUrl } from '@/utils/helper'
 import { GithubRepository } from '@/app/api/get-pinned-items/route'
 import { use } from 'react'
-import { GetServerSideProps } from 'next'
+
+export const metadata = {
+  title: 'Full Stack Developer - Furkan GEZEK',
+}
 
 async function getData() {
   let res = await fetch(`${getBaseUrl()}/api/get-pinned-items`, {
