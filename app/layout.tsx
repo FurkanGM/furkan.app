@@ -61,13 +61,13 @@ export default function RootLayout({
                   </a>
                   <a
                     href="mailto:contact@furkan.app"
-                    className="rounded-lg py-3 px-6 bg-white hover:bg-athens-gray-50 dark:bg-neutrals-700 font-medium text-primary-500 flex items-center justify-center cursor-pointer"
+                    className="rounded-lg py-3 px-6 bg-white hover:bg-athens-gray-50 dark:bg-neutrals-700 dark:hover:bg-neutrals-600 font-medium text-primary-500 flex items-center justify-center cursor-pointer"
                   >
                     <HiOutlineEnvelope size="20" />
                   </a>
                   <a
                     href="https://www.linkedin.com/in/furkan-gezek/"
-                    className="rounded-lg py-3 px-6 bg-white hover:bg-athens-gray-50 dark:bg-neutrals-700 font-medium text-primary-500 flex items-center justify-center cursor-pointer"
+                    className="rounded-lg py-3 px-6 bg-white hover:bg-athens-gray-50 dark:bg-neutrals-700 dark:hover:bg-neutrals-600 font-medium text-primary-500 flex items-center justify-center cursor-pointer"
                     target="_blank"
                   >
                     <AiOutlineLinkedin size="20" />

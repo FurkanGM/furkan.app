@@ -26,7 +26,7 @@ export default function Home() {
           <a
             href={pinnedItem.url}
             target="_blank"
-            className="flex flex-col bg-athens-gray-200 hover:bg-athens-gray-300 p-4 rounded-md"
+            className="flex flex-col p-4 rounded-md bg-athens-gray-200 hover:bg-athens-gray-300 dark:bg-neutrals-700 dark:hover:bg-neutrals-600"
             key={pinnedItem.name}
           >
             <div className="font-semibold text-xl">{pinnedItem.name}</div>
