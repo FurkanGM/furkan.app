@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { IoMoon, IoSunny } from "react-icons/io5";
 import { useTheme } from "next-themes";
+import { HiMoon, HiSun } from "react-icons/hi2";
 
 const Avatar = () => {
 	const [mounted, setMounted] = useState(false);
@@ -23,10 +23,11 @@ const Avatar = () => {
 			}
 			onClick={() =>
 				resolvedTheme === "light" ? setTheme("dark") : setTheme("light")
-			}>
+			}
+		>
 			<div>
-				{resolvedTheme === "dark" && <IoSunny size={20} />}
-				{resolvedTheme === "light" && <IoMoon size={20} />}
+				{resolvedTheme === "dark" && <HiSun size={20} />}
+				{resolvedTheme === "light" && <HiMoon size={20} />}
 			</div>
 		</div>
 	);

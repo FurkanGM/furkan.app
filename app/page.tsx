@@ -1,63 +1,53 @@
-import Avatar from "@/components/Avatar";
-import ThemeSwitcher from "@/components/ThemeSwitcher";
-import {
-	IoArrowDown,
-	IoLogoGithub,
-	IoLogoLinkedin,
-	IoMailOutline,
-} from "react-icons/all";
+import { getBaseUrl } from '@/utils/helper'
+import { GithubRepository } from '@/app/api/get-pinned-items/route'
+import { use } from 'react'
+import { GetServerSideProps } from 'next'
+
+async function getData() {
+  let res = await fetch(`${getBaseUrl()}/api/get-pinned-items`, {
+    cache: 'no-store',
+  })
+
+  if (!res.ok) {
+    throw new Error('Failed to fetch data')
+  }
+
+  return res.json()
+}
 
 export default function Home() {
-	return (
-		<main>
-			<div className="container">
-				<div className="max-w-2xl w-full mx-auto">
-					<div className="flex items-center gap-6 p-3">
-						<div className="flex-shrink-0 relative aspect-square w-[5.625rem] rounded-full overflow-hidden m-3 ring-4 ring-offset-8 ring-offset-athens-gray-100 dark:ring-offset-ebony-900 ring-primary">
-							<Avatar />
-						</div>
-						<div className="flex-shrink-0 flex flex-col">
-							<div className="flex items-center font-semibold text-3xl">
-								<span>Furkan GEZEK</span>
-							</div>
-							<div className="font-normal text-neutrals-700 dark:text-neutrals-20">
-								Fullstack Developer
-							</div>
-							<div className="mt-2">
-								<a href="https://github.com/FurkanGM">
-									<IoLogoGithub size={24} />
-								</a>
-							</div>
-						</div>
-						<div className="w-full flex justify-end">
-							<ThemeSwitcher />
-						</div>
-					</div>
-					<div className="mt-4 p-3 flex gap-3">
-						<a
-							href="/assets/docs/resume.pdf"
-							className="w-full rounded-lg p-3 bg-primary-500 hover:bg-primary-600 font-medium text-white flex items-center justify-center cursor-pointer"
-							download="Furkan Gezek - Resume.pdf"
-						>
-							<span>Download CV</span>
-							<IoArrowDown className="ml-2" size="20" />
-						</a>
-						<a
-							href="mailto:contact@furkan.app"
-							className="rounded-lg py-3 px-6 bg-white hover:bg-athens-gray-50 dark:bg-neutrals-700 font-medium text-primary-500 flex items-center justify-center cursor-pointer"
-						>
-							<IoMailOutline size="20" />
-						</a>
-						<a
-							href="https://www.linkedin.com/in/furkan-gezek/"
-							className="rounded-lg py-3 px-6 bg-white hover:bg-athens-gray-50 dark:bg-neutrals-700 font-medium text-primary-500 flex items-center justify-center cursor-pointer"
-							target="_blank"
-						>
-							<IoLogoLinkedin size="20" />
-						</a>
-					</div>
-				</div>
-			</div>
-		</main>
-	);
+  const pinnedItems = use(getData())
+
+  return (
+    <div className="flex flex-col gap-4">
+      <div className="text-3xl font-semibold">Pinned Repositories</div>
+      {pinnedItems &&
+        pinnedItems.map((pinnedItem: GithubRepository) => (
+          <a
+            href={pinnedItem.url}
+            target="_blank"
+            className="flex flex-col bg-athens-gray-200 hover:bg-athens-gray-300 p-4 rounded-md"
+            key={pinnedItem.name}
+          >
+            <div className="font-semibold text-xl">{pinnedItem.name}</div>
+            <div className="mt-1">{pinnedItem.owner.login}</div>
+            <div className="flex gap-2 mt-2">
+              {pinnedItem.languages &&
+                pinnedItem.languages.map((language) => (
+                  <div
+                    className="text-xs px-2 py-1 rounded-md text-white"
+                    style={{ backgroundColor: language.color }}
+                    key={language.name}
+                  >
+                    {language.name}
+                  </div>
+                ))}
+            </div>
+            {pinnedItem.description && (
+              <div className="mt-2">{pinnedItem.description}</div>
+            )}
+          </a>
+        ))}
+    </div>
+  )
 }
