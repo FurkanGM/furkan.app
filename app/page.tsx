@@ -32,6 +32,7 @@ export default function Home() {
             target="_blank"
             className="flex flex-col p-4 rounded-md bg-athens-gray-200 hover:bg-athens-gray-300 dark:bg-neutrals-700 dark:hover:bg-neutrals-600"
             key={pinnedItem.name}
+            aria-label={pinnedItem.name}
           >
             <div className="flex items-center">
               <div className="font-semibold text-xl">{pinnedItem.name}</div>
