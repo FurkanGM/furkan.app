@@ -21,6 +21,7 @@ export interface GithubRepository {
   name: string
   description?: string
   url: string
+  stargazerCount: string
   owner: {
     login: string
   }
@@ -69,6 +70,7 @@ async function getRepository(repository: GithubRepository) {
 		repository(name: "${repository.name}", owner: "${repository.owner.login}") {
 			description,
 			url,
+      stargazerCount,
 			languages(first: 10, orderBy: {direction: DESC, field: SIZE}) {
 				nodes {
 					name

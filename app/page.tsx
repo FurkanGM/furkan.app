@@ -1,6 +1,7 @@
 import { getBaseUrl } from '@/utils/helper'
 import { GithubRepository } from '@/app/api/get-pinned-items/route'
 import { use } from 'react'
+import { HiStar } from 'react-icons/all'
 
 export const metadata = {
   title: 'Full Stack Developer - Furkan GEZEK',
@@ -32,7 +33,13 @@ export default function Home() {
             className="flex flex-col p-4 rounded-md bg-athens-gray-200 hover:bg-athens-gray-300 dark:bg-neutrals-700 dark:hover:bg-neutrals-600"
             key={pinnedItem.name}
           >
-            <div className="font-semibold text-xl">{pinnedItem.name}</div>
+            <div className="flex items-center">
+              <div className="font-semibold text-xl">{pinnedItem.name}</div>
+              <div className="flex items-center ml-2 font-medium">
+                <HiStar className="mr-1 text-yellow-500" />{' '}
+                {pinnedItem.stargazerCount}
+              </div>
+            </div>
             <div className="mt-1">{pinnedItem.owner.login}</div>
             <div className="flex gap-2 mt-2">
               {pinnedItem.languages &&
