@@ -42,7 +42,7 @@ export default function Home() {
               </div>
             </div>
             <div className="mt-1">{pinnedItem.owner.login}</div>
-            <div className="flex gap-2 mt-2">
+            <div className="flex flex-wrap gap-2 mt-2">
               {pinnedItem.languages &&
                 pinnedItem.languages.map((language) => (
                   <div
