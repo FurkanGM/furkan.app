@@ -8,6 +8,7 @@ import Avatar from '@/components/Avatar'
 import ThemeSwitcher from '@/components/ThemeSwitcher'
 import { HiArrowDown, HiOutlineEnvelope } from 'react-icons/hi2'
 import { AiOutlineGithub, AiOutlineLinkedin } from 'react-icons/ai'
+import { Analytics } from '@vercel/analytics/react'
 
 const poppins = Poppins({
   weight: ['400', '500', '600'],
@@ -94,6 +95,7 @@ export default function RootLayout({
             </div>
           </main>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   )
