@@ -1,5 +1,5 @@
 import { getBaseUrl } from '@/utils/helper'
-import { GithubRepository } from '@/app/api/get-pinned-items/route'
+import { GithubRepository } from '@/app/api/pinned-items/route'
 import { use } from 'react'
 import { HiStar } from 'react-icons/all'
 
@@ -8,7 +8,7 @@ export const metadata = {
 }
 
 async function getData() {
-  let res = await fetch(`${getBaseUrl()}/api/get-pinned-items`, {
+  let res = await fetch(`${getBaseUrl()}/api/pinned-items`, {
     cache: 'no-store',
   })
 
