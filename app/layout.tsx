@@ -27,9 +27,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <Header />
                 <div className="mt-4 flex gap-3 p-3">
                   <a
-                    href="/assets/docs/resume.pdf"
+                    href="https://docs.google.com/document/d/1XidpTdKqqdC4cTm5_Xu7Fvxh3dVFlAkBT4OKRauxO4A"
                     className="flex w-full cursor-pointer items-center justify-center rounded-lg bg-primary-500 p-3 font-medium text-white hover:bg-primary-600"
-                    download="Furkan Gezek - Resume.pdf"
+                    target="_blank"
                     aria-label="Furkan Gezek resume pdf"
                   >
                     <span>Preview CV</span>
