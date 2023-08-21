@@ -1,51 +1,51 @@
-import { NextResponse } from 'next/server'
+import { NextResponse } from "next/server";
 
 export async function GET(request: Request) {
-  const userPinnedItems = await getPinnedItems()
-  let repositories: GithubRepository[] = []
+  const userPinnedItems = await getPinnedItems();
+  let repositories: GithubRepository[] = [];
 
   for (const pinnedItem of userPinnedItems.data.user.pinnedItems.nodes) {
-    const repositoryData = await getRepository(pinnedItem)
+    const repositoryData = await getRepository(pinnedItem);
 
     repositories.push({
       ...pinnedItem,
       ...repositoryData.data.repository,
       languages: repositoryData.data.repository.languages.nodes,
-    })
+    });
   }
 
-  return NextResponse.json(repositories)
+  return NextResponse.json(repositories);
 }
 
 export interface GithubRepository {
-  name: string
-  description?: string
-  url: string
-  stargazerCount: string
+  name: string;
+  description?: string;
+  url: string;
+  stargazerCount: string;
   owner: {
-    login: string
-  }
+    login: string;
+  };
   languages?: Array<{
-    name: string
-    color: string
-  }>
+    name: string;
+    color: string;
+  }>;
 }
 
 async function doRequest(query: string) {
-  const req = await fetch('https://api.github.com/graphql', {
+  const req = await fetch("https://api.github.com/graphql", {
     next: {
       revalidate: 0,
     },
-    method: 'POST',
+    method: "POST",
     headers: {
       Authorization: `bearer ${process.env.GITHUB_TOKEN}`,
     },
     body: JSON.stringify({
       query,
     }),
-  })
+  });
 
-  return await req.json()
+  return await req.json();
 }
 
 async function getPinnedItems() {
@@ -62,7 +62,7 @@ async function getPinnedItems() {
 				}
 			}
 		}
-	}`)
+	}`);
 }
 
 async function getRepository(repository: GithubRepository) {
@@ -78,5 +78,5 @@ async function getRepository(repository: GithubRepository) {
 				},
 			}
 		}
-	}`)
+	}`);
 }
