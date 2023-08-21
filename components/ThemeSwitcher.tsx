@@ -1,20 +1,11 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useTheme } from "next-themes";
 import { HiMoon, HiSun } from "react-icons/hi2";
 
-const Avatar = () => {
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
+const ThemeSwitcher = () => {
   const { resolvedTheme, setTheme } = useTheme();
-
-  if (!mounted) {
-    return null;
-  }
 
   return (
     <div
@@ -23,12 +14,12 @@ const Avatar = () => {
       }
       onClick={() => (resolvedTheme === "light" ? setTheme("dark") : setTheme("light"))}
     >
-      <div>
-        {resolvedTheme === "dark" && <HiSun size={20} />}
-        {resolvedTheme === "light" && <HiMoon size={20} />}
+      <div className="relative">
+        <HiSun size={20} className="dark:hidden" />
+        <HiMoon size={20} className="hidden dark:block" />
       </div>
     </div>
   );
 };
 
-export default Avatar;
+export default ThemeSwitcher;
