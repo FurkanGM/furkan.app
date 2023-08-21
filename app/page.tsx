@@ -6,20 +6,24 @@ export const metadata = {
   title: "Furkan GEZEK | Full Stack Developer",
 };
 
-async function getGithubUser() {
-  let res = await fetch(`${getBaseUrl()}/api/user`, {
-    next: { revalidate: 3600 },
-  });
+async function getGithubUser(): Promise<User | null> {
+  try {
+    let res = await fetch(`${getBaseUrl()}/api/user`, {
+      next: { revalidate: 3600 },
+    });
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
+    if (!res.ok) {
+      throw new Error("Failed to fetch data");
+    }
+
+    return res.json();
+  } catch (e) {
+    return null;
   }
-
-  return res.json();
 }
 
 export default async function Home() {
-  const user: User = await getGithubUser();
+  const user = await getGithubUser();
 
   return (
     <div className="flex flex-col gap-4">
